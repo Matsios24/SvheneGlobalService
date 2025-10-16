@@ -3,17 +3,13 @@ import { NavLink } from "react-router-dom";
 
 const ServicesCard = ({ title, image, description }) => {
   return (
-    <div className=" w-fit h-6/12 bg-white m-3 rounded-2xl overflow-hidden ">
+    <div className=" w-fit h-6/12 bg-white m-3 rounded-2xl overflow-hidden shadow-2xl shadow-neutral-400">
       <div className="flex flex-1 flex-col">
         {/* ------------------------------------------------ */}
         {/* ######### Image */}
         {/* ------------------------------------------------ */}
 
-        <img
-          src={image}
-          alt={title}
-          className="w-[40rem] h-full opacity-[0.9]"
-        />
+        <img src={image} alt={title} className="w-[40rem] h-[20rem]" />
 
         {/* ------------------------------------------------ */}
         {/* ######### Part title & Description */}
