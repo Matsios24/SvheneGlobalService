@@ -16,13 +16,11 @@ const ServicesCard = ({ title, image, description }) => {
         {/* ------------------------------------------------ */}
 
         <div className="p-3 flex-1 flex-col">
-          <p className="text-green-700 text-3xl font-bold text-start">
-            {title}
-          </p>
+          <p className="text-sky-600 text-3xl font-bold text-start">{title}</p>
           <p className=" overflow-hidden text-gray-800 text-justify text-2xl w-[20rem]">
             {description}
           </p>
-          <p className=" text-end text-xl font-bold">
+          <p className=" text-end flex justify-center text-xl w-64 font-bold">
             {" "}
             <NavLink to="/projet"> Voir Plus</NavLink>{" "}
           </p>
