@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="bg-green-700 text-white text-2xs p-2 font-semibold text-center">
+    <div className="bg-gradient-to-r from-pink-500  text-white text-2xs p-2 font-semibold text-center">
       <p>Adresse : Base Industrielle, derrière Congo Service</p>
       <p>Email : contactsgs.net@gmail.com</p>
       <p>Tel : +242 06 520 32 13 / 05 503 48 22</p>
