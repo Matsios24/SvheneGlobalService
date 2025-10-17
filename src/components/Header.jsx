@@ -64,8 +64,12 @@ const Header = () => {
           : "w-auto p-2 flex justify-between shadow-2xl shadow-neutral-300 "
       }`}
     >
-      <NavLink to={"/"}>
-        <img src={logoImage} alt="" className="w-14 h-14 max-sm:m-2.5 xl:m-2" />
+      <NavLink to={"/"} className="flex items-center gap-3">
+        <img src={logoImage} alt="" className="w-24 h-17 max-sm:m-2.5 xl:m-2" />{" "}
+        <p className="uppercase text-4xl font-bold text-pink-500 first-letter:text-4xl">
+          {" "}
+          Sgs
+        </p>
       </NavLink>
       {/* mobile icone view bar */}
 
