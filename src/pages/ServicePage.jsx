@@ -2,6 +2,7 @@ import React from "react";
 import { services } from "../contents/ContentServices.js";
 import ServicesCard from "../components/ServicesCard";
 import { motion } from "framer-motion";
+import "aos/dist/aos.css";
 
 const containerVariants = {
   hidden: {
@@ -25,10 +26,18 @@ const ServicePage = () => {
       animate="visible"
       exit="exit"
     >
-      <h2 className="text-center text-6xl font-bold p-5 max-sm:text-4xl text-pink-800 h-auto bg-gradient-to-r from-pink-400  to-sky-500 ">
+      <h2
+        data-aos="fade-right"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-sine"
+        className="text-center text-6xl font-bold p-5 max-sm:text-4xl text-pink-800 h-auto bg-gradient-to-r from-pink-400  to-sky-500 "
+      >
         Un service de qualité pour tous vos travaux
       </h2>
-      <h1 className="text-center text-sky-600 font-bold text-5xl p-5">
+      <h1
+        data-aos="zoom-in"
+        className="text-center text-sky-600 font-bold text-5xl p-5"
+      >
         BÂTIMENT
       </h1>
       <div className="flex flex-wrap justify-around w-full h-full items-center mb-3">
@@ -38,13 +47,22 @@ const ServicePage = () => {
             description={items.description}
             image={items.image}
             title={items.title}
+            i={i}
           />
         ))}
       </div>
-      <h2 className="text-center text-6xl font-bold p-5 max-sm:text-4xl text-pink-800 h-auto bg-gradient-to-r from-pink-400  to-sky-500 ">
+      <h2
+        data-aos="fade-right"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-sine"
+        className="text-center text-6xl font-bold p-5 max-sm:text-4xl text-pink-800 h-auto bg-gradient-to-r from-pink-400  to-sky-500 "
+      >
         Un service de qualité pour tous vos travaux
       </h2>
-      <h1 className="text-center text-sky-600 font-bold text-5xl p-5">
+      <h1
+        data-aos="zoom-in"
+        className="text-center text-sky-600 font-bold text-5xl p-5"
+      >
         Industrie
       </h1>
       <div className="flex flex-wrap gap-2 justify-around w-full h-full items-center">
