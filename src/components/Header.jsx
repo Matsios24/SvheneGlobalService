@@ -1,30 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "aos/dist/aos.css";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/Logo_SGS.jpg";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-//
+
 const content = {
   logoImage: logo,
   nav: [
-    {
-      link: "/",
-      title: "Home",
-    },
-    {
-      link: "/services",
-      title: "Service",
-    },
-    {
-      link: "/projet",
-      title: "Projet",
-    },
-    {
-      link: "/about",
-      title: "About",
-    },
+    { link: "/", title: "Home" },
+    { link: "/services", title: "Services" },
+    { link: "/projet", title: "Projet" },
+    { link: "/about", title: "About" },
   ],
 };
 
@@ -34,79 +21,104 @@ const Header = () => {
 
   const { nav, logoImage } = content;
 
-  // Handle scroll effect
+  // Effet de défilement
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 30) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 30);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Toggle menu
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  // Toggle menu mobile
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
 
-  // Close menu when clicking on a link
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
   return (
-    <div
-      className={` ${
+    <header
+      className={`fixed w-full flex justify-between items-center px-4 py-3 z-20 transition-all duration-300 ${
         scrolled
-          ? "fixed opacity-75  flex justify-between items-center w-full bg-gradient-to-r from-pink-500  to-sky-500 shadow-2xl shadow-neutral-700 z-10"
-          : "w-auto p-2 flex justify-between  shadow-2xl shadow-neutral-300 "
+          ? "bg-gradient-to-r from-pink-500 to-sky-500 shadow-2xl"
+          : "bg-white"
       }`}
     >
-      <NavLink to={"/"} className="flex items-center gap-3">
-        <img src={logoImage} alt="" className="w-24 h-17 max-sm:m-2.5 xl:m-2" />{" "}
+      {/* Logo */}
+      <NavLink to="/" className="flex items-center gap-2 z-30">
+        <img
+          src={logoImage}
+          alt="Logo SGS"
+          className="w-16 h-[60px] object-contain"
+        />
         <p
-          className={`${
-            scrolled
-              ? " text-white text-4xl font-bold max-sm:text-3xl"
-              : "  text-4xl font-bold text-pink-500 max-sm:text-2xl"
+          className={`font-bold text-xl md:text-2xl ${
+            scrolled ? "text-white" : "text-pink-500"
           }`}
         >
-          {" "}
-          Svhene Global Service
+          Svehene Global Service
         </p>
       </NavLink>
-      {/* mobile icone view bar */}
 
+      {/* Bouton menu mobile */}
       <button
         onClick={toggleMenu}
-        className="text-2xl xl:hidden z-101 mt-5 mr-5 "
+        className="text-3xl xl:hidden z-30 text-pink-500 hover:text-sky-500 transition"
       >
         {isMenuOpen ? <FaTimes /> : <FaBars />}
       </button>
 
-      <div
-        data-aos="fade-left"
-        className={`${
-          isMenuOpen
-            ? "bg-white text-black top-0 z-[80] max-sm:fixed md:fixed to-0%  min-sm:h-[300px] max-sm:h-[300px] w-full flex flex-col justify-start items-center gap-8 transition-all shadow-2xl shadow-neutral-600"
-            : "md:hidden xl:flex items-center justify-between w-[50%] max-sm:hidden "
-        }`}
-      >
+      {/* Menu Desktop */}
+      <nav className="hidden md:flex items-center justify-between w-[50%]">
         {nav.map((data, i) => (
           <NavLink to={data.link} key={i} onClick={closeMenu}>
             <motion.p
-              whileHover={{ scale: 0.8, transition: 0.9 }}
-              className="  text-center font-bold p-3 w-40  rounded-4xl transition-all hover:bg-gradient-to-r from-pink-500  to-sky-500 hover:text-white "
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.3 }}
+              className="font-bold p-2 w-32 text-center rounded-3xl transition-all hover:bg-gradient-to-r from-pink-500 to-sky-500 hover:text-white"
             >
-              {data.title}{" "}
+              {data.title}
             </motion.p>
           </NavLink>
         ))}
-      </div>
-    </div>
+      </nav>
+
+      {/* Menu Mobile plein écran */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="fixed inset-0 bg-gradient-to-b from-pink-500 to-sky-500 flex flex-col items-center justify-center gap-10 text-white z-20"
+          >
+            {nav.map((data, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <NavLink
+                  to={data.link}
+                  onClick={closeMenu}
+                  className="text-2xl font-semibold hover:underline"
+                >
+                  {data.title}
+                </NavLink>
+              </motion.div>
+            ))}
+            <motion.button
+              onClick={closeMenu}
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.3 }}
+              className="mt-6 text-sm font-semibold bg-white text-pink-500 px-6 py-2 rounded-full shadow-lg hover:bg-sky-100"
+            >
+              Fermer
+            </motion.button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 };
 
