@@ -6,6 +6,8 @@ import equipe_1 from "../assets/equipe_1.jpg";
 import logoImage from "../assets/Logo_SGS.jpg";
 import { motion } from "framer-motion";
 import ProjectCard from "../components/ProjectCard";
+import "aos/dist/aos.css";
+
 const projet = {
   etude: [
     {
@@ -44,7 +46,11 @@ const Project = () => {
       animate="visible"
       exit="exit"
     >
-      <div className="w-full h-90 bg-amber-600">
+      <div
+        data-aos="fade-up"
+        data-aos-anchor-placement="top-center"
+        className="w-full h-90 bg-amber-600"
+      >
         <img
           src={imageprojet}
           alt=""
@@ -60,6 +66,7 @@ const Project = () => {
         <div className=" p-4 grid md:grid-cols-2 sm:grid-cols-1 xl:grid-cols-2 justify-center xl:justify-center items-center gap-3 w-full h-auto">
           {etude.map((data, i) => (
             <p
+              data-aos="flip-down"
               key={i}
               className="  bg-sky-800 text-white w-full h-auto text-2xl text-justify first-letter:text-5xl rounded-sm shadow-md shadow-neutral-600 p-2"
             >
@@ -86,13 +93,14 @@ const Project = () => {
           ></video>
         </div>
         {/* Description */}
-        <div className="p-4 w-full">
+        <div data-aos="fade-left" className="p-4 w-full">
           <img src={logoImage} alt="" className="h-30 w-30 m-auto" />
+          <h1 className="text-white text-4xl text-center">
+            réalisation de la base de congo-plast
+          </h1>
           <p className="text-white text-justify w-full">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem,
-            dolor? Eveniet temporibus quis veritatis alias ratione, veniam nam
-            dolores accusamus. Maxime cupiditate id laudantium architecto
-            tempore error libero cumque pariatur!
+            la socété svhene global services apris en charge la construction de
+            la base de la socété congo-plast à pointe-noire
           </p>
         </div>
       </div>
@@ -106,12 +114,10 @@ const Project = () => {
           alt="presentation de l'équipe"
           className="w-full object-cover h-[400px] max-sm:h-[300px]"
         />
-        <motion.h2
-          variants={fadeIn}
-          initial="hidden"
-          whileInView="visible"
-          transition={{ duration: 0.5, delay: 1.5 }}
-          className="absolute flex flex-col text-4xl font-medium text-neutral-800 max-sm:top-65 top-95  h-30 max-sm:text-2xl p-3 text-center bg-white opacity-50 w-full"
+        <h2
+          data-aos="fade-up"
+          data-aos-anchor-placement="bottom-bottom"
+          className="absolute flex flex-col text-4xl font-medium text-neutral-800 max-sm:top-70 top-95  h-auto max-sm:p-2 max-sm:text-2xl p-3 text-center bg-white w-full"
         >
           Toujours disposé à vous satisfaire
           <span className="uppercase text-pink-800 font-bold">
@@ -121,26 +127,26 @@ const Project = () => {
             {" "}
             Nous vous portons à coeur
           </span>
-        </motion.h2>
+        </h2>
       </div>
       <div className="grid grid-cols-2 max-sm:grid-cols-1 w-full bg-neutral-900">
         {/* Description */}
-        <div className="p-4 w-full">
+        <div data-aos="fade-right" className="p-4 w-full">
           <img src={logoImage} alt="" className="h-30 w-30 m-auto" />
+          <h1 className="text-white text-4xl text-center">
+            réalisation de la charpente metalique de la socété regal-groupe
+            congo
+          </h1>
           <p className="text-white text-justify w-full">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem,
-            dolor? Eveniet temporibus quis veritatis alias ratione, veniam nam
-            dolores accusamus. Maxime cupiditate id laudantium architecto
-            tempore error libero cumque pariatur!
+            la société svhene global services apris encharge la réalisation de
+            la charpente metalique pour le conte de la société régal-groupe
+            congo
           </p>
         </div>
         <div className="p-3 w-full">
-          <video
-            src={realisation_2}
-            controls
-            width="250"
-            className="w-full h-full rounded-md"
-          ></video>
+          <video controls width="300px" className="w-full h-full rounded-md">
+            <source src={realisation_2} type="video/mp4" />
+          </video>
         </div>
       </div>
     </motion.div>
