@@ -34,22 +34,13 @@ const Contact = ({ onclose }) => {
         >
           <FaTimes />
         </button>
+        <p className="text-center text-sm font-semibold">
+          Disponible 7J/7 & 24h/24
+        </p>
       </div>
     </div>
 
-    // <div className=" relative max-sm:h-full w-full ">
-    //   <div
-    //
-    //     className=" z-[101]  left-85 max-sm:top-0 max-sm:left-2 fixed  flex flex-col items-center justify-center  gap-2 m-auto "
-    //   >
-    //     <div className="bg-white flex flex-col items-center justify-center gap-5 w-2xl  h-[250px] m-auto max-sm:w-[200px] max-sm:h-[200px]">
-    //       <h1 className="text-2xl font-semibold">Contactez-nous par :</h1>
-    //       <div className="flex gap-5">
 
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 

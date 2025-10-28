@@ -1,9 +1,16 @@
 import React from "react";
+import "aos/dist/aos.css";
 import { NavLink } from "react-router-dom";
 
-const ServicesCard = ({ title, image, description }) => {
+const ServicesCard = ({ title, image, description, i }) => {
   return (
-    <div className=" max-sm:min-w-[350px] xl:w-[500px] h-[400px] bg-white m-3 rounded-2xl overflow-hidden shadow-2xl shadow-neutral-400">
+    <div
+      data-aos="fade-zoom-in"
+      data-aos-easing="ease-in-back"
+      data-aos-delay={`300 ${+i}`}
+      data-aos-offset="0"
+      className=" max-sm:min-w-[350px] xl:w-[500px] h-[400px] bg-white m-3 rounded-2xl overflow-hidden shadow-2xl shadow-neutral-400"
+    >
       <div className="grid grid-cols-1 xl:grid-cols-2">
         {/* ------------------------------------------------ */}
         {/* ######### Image */}
