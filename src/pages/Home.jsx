@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import logopartenaire from "../assets/partenaire/gmesmarine-logo.png";
 import { motion } from "framer-motion";
 import { RiCustomerService2Line } from "react-icons/ri";
-import PresentationHomeCard from "../components/presentationHomeCard";
+import PresentationHomeCard from "../components/PresentationHomeCard";
 import { services } from "../contents/ContentServices";
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -128,7 +128,6 @@ const Home = () => {
       <div className="  p-4 gap-2  w-full h-auto max-sm:gap-3  grid grid-cols-3 max-sm:grid-cols-1 md:grid-cols-3 xl:gap-3 ">
         {homeProjet.map((item, i) => (
           <PresentationHomeCard
-       
             key={i}
             description={item.description}
             image={item.image}
